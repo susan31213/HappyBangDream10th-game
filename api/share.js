@@ -2,11 +2,11 @@ export default function handler(req, res) {
   const rank = req.query.rank ?? 'NONE';
 
   const rankConfig = {
-    NONE: { image: '/ogp/mygo/clear_0.png', label: 'Sランク達成！' },
-    1: { image: '/ogp/mygo/clear_1.png', label: 'Aランク達成！' },
-    2: { image: '/ogp/mygo/clear_2.png', label: 'Bランク達成！' },
-    3: { image: '/ogp/mygo/clear_3.png', label: 'Cランク達成！' },
-    SP: { image: '/ogp/mygo/clear_sp.png', label: 'Dランク達成！' },
+    NONE: { image: '/ogp/mygo/clear_0.png', label: 'ともりんの石検定をクリアできなかった...！あなたは何級？ともりの石検定に挑戦してみてね！' },
+    1: { image: '/ogp/mygo/clear_1.png', label: 'ともりんの石検定3級を取りました！あなたは何級？ともりの石検定に挑戦してみてね！' },
+    2: { image: '/ogp/mygo/clear_2.png', label: 'ともりんの石検定2級を取りました！あなたは何級？ともりの石検定に挑戦してみてね！' },
+    3: { image: '/ogp/mygo/clear_3.png', label: 'ともりんの石検定1級を取りました！あなたは何級？ともりの石検定に挑戦してみてね！' },
+    SP: { image: '/ogp/mygo/clear_sp.png', label: 'ともりんの石検定1級を取りました！あなたは何級？ともりの石検定に挑戦してみてね！' },
   };
 
   const config = rankConfig[rank] ?? rankConfig['NONE'];
