@@ -36,12 +36,12 @@ export class MyGoScene extends BaseLevelScene {
         'star2-win': 'ともりんの石検定1級を取りました！',
     };
     static ROUND_NUM_SNS_URLS = {
-        'stone0-lose': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_0.html',  // TOMORI
-        'stone1-lose': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_1.html',  // ANON
-        'stone2-lose': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_2.html',  // TAKI
-        'stone2-win': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_3.html',   // RANA
-        'star2-lose': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_2.html',   // TAKI
-        'star2-win': 'https://susan31213.github.io/HappyBangDream10th/html/mygo/clear_sp.html',    // SOYO
+        'stone0-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR0',  // TOMORI
+        'stone1-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR1',  // ANON
+        'stone2-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR2',  // TAKI
+        'stone2-win': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR3',   // RANA
+        'star2-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR2',   // TAKI
+        'star2-win': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_SP',    // SOYO
     };
 
     init(data) {

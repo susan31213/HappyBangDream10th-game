@@ -1,15 +1,15 @@
 module.exports = (req, res) => {
-  const rank = req.query.rank ?? 'NONE';
+  const rank = req.query.rank ?? 'CLEAR0';
 
   const rankConfig = {
-    NONE: { image: '/ogp/mygo/clear_0.png', label: 'あなたは何級？ともりんの石検定に挑戦してみてね！' },
-    1: { image: '/ogp/mygo/clear_1.png', label: 'あなたは何級？ともりんの石検定に挑戦してみてね！' },
-    2: { image: '/ogp/mygo/clear_2.png', label: 'あなたは何級？ともりんの石検定に挑戦してみてね！' },
-    3: { image: '/ogp/mygo/clear_3.png', label: 'あなたは何級？ともりんの石検定に挑戦してみてね！' },
-    SP: { image: '/ogp/mygo/clear_sp.png', label: 'あなたは何級？ともりんの石検定に挑戦してみてね！' },
+    CLEAR0: { image: '/ogp/mygo/clear_0.png' },
+    CLEAR1: { image: '/ogp/mygo/clear_1.png' },
+    CLEAR2: { image: '/ogp/mygo/clear_2.png' },
+    CLEAR3: { image: '/ogp/mygo/clear_3.png' },
+    CLEAR_SP: { image: '/ogp/mygo/clear_sp.png' },
   };
 
-  const config = rankConfig[rank] ?? rankConfig['NONE'];
+  const config = rankConfig[rank] ?? rankConfig['CLEAR0'];
   const baseUrl = `https://happy-bang-dream10th-game.vercel.app`;
   const imageUrl = `${baseUrl}${config.image}`;
   const shareUrl = `${baseUrl}/api/share?rank=${rank}`;
@@ -20,13 +20,13 @@ module.exports = (req, res) => {
   <meta charset="UTF-8">
   <meta property="og:type"         content="website">
   <meta property="og:url"          content="${shareUrl}">
-  <meta property="og:title"        content="${config.label} | ともりんの石検定">
+  <meta property="og:title"        content="あなたは何級？ともりんの石検定に挑戦してみてね！">
   <meta property="og:description"  content="あなたの石検定レベルをチェック！">
   <meta property="og:image"        content="${imageUrl}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="${config.label} | ともりんの石検定">
+  <meta name="twitter:title"       content="あなたは何級？ともりんの石検定に挑戦してみてね！">
   <meta name="twitter:description" content="あなたの石検定レベルをチェック！">
   <meta name="twitter:image"       content="${imageUrl}">
 
