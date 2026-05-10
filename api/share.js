@@ -10,7 +10,7 @@ export default function handler(req, res) {
   };
 
   const config = rankConfig[rank] ?? rankConfig['NONE'];
-  const baseUrl = `https://vercel.com/susan31213s-projects/happy-bang-dream10th-game`;
+  const baseUrl = `https://happy-bang-dream10th-game.vercel.app`;
   const imageUrl = `${baseUrl}${config.image}`;
   const shareUrl = `${baseUrl}/api/share?rank=${rank}`;
 
@@ -33,7 +33,7 @@ export default function handler(req, res) {
   <meta name="twitter:image"       content="${imageUrl}">
 
   <!-- ゲーム本体にリダイレクト（任意） -->
-  <meta http-equiv="refresh" content="0;url=https://vercel.com/susan31213s-projects/happy-bang-dream10th-game">
+  <meta http-equiv="refresh" content="0;url=https://happy-bang-dream10th-game.vercel.app">
 </head>
 <body>
   <p>リダイレクト中...</p>
