@@ -20,16 +20,14 @@ export default function handler(req, res) {
   <meta charset="UTF-8">
   <meta property="og:type"         content="website">
   <meta property="og:url"          content="${shareUrl}">
-  <meta property="og:title"        content="${config.label} | ゲーム名">
-  <meta property="og:description"  content="あなたのスコアをチェック！">
+  <meta property="og:title"        content="${config.label} | ともりんの石検定">
+  <meta property="og:description"  content="あなたの石検定レベルをチェック！">
   <meta property="og:image"        content="${imageUrl}">
-  <meta property="og:image:width"  content="1200">
-  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="${config.label} | ゲーム名">
-  <meta name="twitter:description" content="あなたのスコアをチェック！">
+  <meta name="twitter:title"       content="${config.label} | ともりんの石検定">
+  <meta name="twitter:description" content="あなたの石検定レベルをチェック！">
   <meta name="twitter:image"       content="${imageUrl}">
 
   <!-- ゲーム本体にリダイレクト（任意） -->
