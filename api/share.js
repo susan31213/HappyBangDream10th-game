@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+module.exports = (req, res) => {
   const rank = req.query.rank ?? 'NONE';
 
   const rankConfig = {
@@ -42,4 +42,4 @@ export default function handler(req, res) {
   // XのOGPクローラー向けキャッシュ設定
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
   res.status(200).send(html);
-}
+};
