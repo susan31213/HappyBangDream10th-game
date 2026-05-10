@@ -2,10 +2,10 @@ module.exports = (req, res) => {
   const rank = req.query.rank ?? 'CLEAR0';
 
   const rankConfig = {
-    CLEAR0: { image: '/ogp/mygo/clear_0.png' },
-    CLEAR1: { image: '/ogp/mygo/clear_1.png' },
-    CLEAR2: { image: '/ogp/mygo/clear_2.png' },
-    CLEAR3: { image: '/ogp/mygo/clear_3.png' },
+    CLEAR0: { image: '/ogp/mygo/clear_00.png' },
+    CLEAR1: { image: '/ogp/mygo/clear_01.png' },
+    CLEAR2: { image: '/ogp/mygo/clear_02.png' },
+    CLEAR3: { image: '/ogp/mygo/clear_03.png' },
     CLEAR_SP: { image: '/ogp/mygo/clear_sp.png' },
   };
 
