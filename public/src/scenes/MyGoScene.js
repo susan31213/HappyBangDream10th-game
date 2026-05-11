@@ -152,15 +152,17 @@ export class MyGoScene extends BaseLevelScene {
         });
 
         // Add a button to set round 3 stone type to star for testing, click again to set back to normal
-        const debugStarButton = this.add.text(100, 100, 'Debug: Round 3 Star [OFF]', { fontSize: '20px', color: '#ff0000' }).setInteractive();
+        const debugStarButton = this.add.text(10, 100, 'Debug: レベル3星を強制出す [OFF]', { fontSize: '20px', color: '#ff0000' }).setInteractive();
         debugStarButton.on('pointerdown', () => {
             if (this.stoneTypeProbability === 0) {
                 this.stoneTypeProbability = 50;
-                debugStarButton.setText('Debug: Round 3 Star [OFF]');
+                debugStarButton.setText('Debug: レベル3星を強制出す [OFF]');
+                debugStarButton.setColor('#ff0000');
                 return;
             } else {
                 this.stoneTypeProbability = 0;
-                debugStarButton.setText('Debug: Round 3 Star [ON]');
+                debugStarButton.setText('Debug: レベル3星を強制出す [ON]');
+                debugStarButton.setColor('#00ff00');
             }
         });
         this.debugLayer.add(debugStarButton);
