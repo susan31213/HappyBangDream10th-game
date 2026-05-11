@@ -7,6 +7,7 @@ export class MyGoScene extends BaseLevelScene {
     constructor() {
         super('MyGoScene');
         this.roundNum = 0;
+        this.stoneTypeProbability = 50;  // 0 means always star, 100 means always stone
     }
 
     static ROUND_COUNT = 3;
@@ -149,7 +150,21 @@ export class MyGoScene extends BaseLevelScene {
                 }
             });
         });
-    }
+
+        // Add a button to set round 3 stone type to star for testing, click again to set back to normal
+        const debugStarButton = this.add.text(100, 100, 'Debug: Round 3 Star [OFF]', { fontSize: '20px', color: '#ff0000' }).setInteractive();
+        debugStarButton.on('pointerdown', () => {
+            if (this.stoneTypeProbability === 0) {
+                this.stoneTypeProbability = 50;
+                debugStarButton.setText('Debug: Round 3 Star [OFF]');
+                return;
+            } else {
+                this.stoneTypeProbability = 0;
+                debugStarButton.setText('Debug: Round 3 Star [ON]');
+            }
+        });
+        this.debugLayer.add(debugStarButton);
+}
 
     addBg() {
         if (!this.children.getByName('showing_bg')) {
@@ -181,7 +196,7 @@ export class MyGoScene extends BaseLevelScene {
         this.addRoundText();
 
         // only last round, 50% chance to select 'star', 50% chance to select 'stone'
-        this.stoneType = this.roundNum === MyGoScene.ROUND_COUNT - 1 && Phaser.Math.Between(1, 100) >= 50 ? 'star' : 'stone';
+        this.stoneType = this.roundNum === MyGoScene.ROUND_COUNT - 1 && Phaser.Math.Between(1, 100) >= this.stoneTypeProbability ? 'star' : 'stone';
         this.createStones();
     }
 
