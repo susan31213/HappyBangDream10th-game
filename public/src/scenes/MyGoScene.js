@@ -23,7 +23,7 @@ export class MyGoScene extends BaseLevelScene {
         'stone3': '修学旅行先で出会った石',
         'stone4': 'アリの巣の入口を塞いでいた石',
         'stone5': '河原で見つけた石',
-        'star1': '夜空に輝く星',
+        'star1': 'キラキラ\nドキドキ\nする星',
         'star2': '宇宙から届いた星',
         'star3': 'ガルパをより楽しめる星',
     };
@@ -56,6 +56,9 @@ export class MyGoScene extends BaseLevelScene {
         this.load.image('showing_bg', 'assets/mygo/showing_bg.png');
         this.load.image('hand_grab', 'assets/mygo/hand_grab.png');
         this.load.image('hand_release', 'assets/mygo/hand_release.png');
+        this.load.image('hand_random_star_grab', 'assets/mygo/hand_random_star_grab.png');
+        this.load.image('hand_random_star_release', 'assets/mygo/hand_random_star_release.png');
+        this.load.image('random_star', 'assets/mygo/stones/random_star.png');
         this.load.image('selecting_bg', 'assets/mygo/selecting_bg.png');
         this.load.image('level1', 'assets/mygo/level1.png');
         this.load.image('level2', 'assets/mygo/level2.png');
@@ -178,7 +181,7 @@ export class MyGoScene extends BaseLevelScene {
         this.addRoundText();
 
         // only last round, 50% chance to select 'star', 50% chance to select 'stone'
-        this.stoneType = this.roundNum === MyGoScene.ROUND_COUNT - 1 && Phaser.Math.Between(1, 100) >= 100 ? 'star' : 'stone';
+        this.stoneType = this.roundNum === MyGoScene.ROUND_COUNT - 1 && Phaser.Math.Between(1, 100) >= 50 ? 'star' : 'stone';
         this.createStones();
     }
 
