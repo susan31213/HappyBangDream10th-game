@@ -1,5 +1,6 @@
 module.exports = (req, res) => {
-  const rank = req.query.rank ?? 'CLEAR_0';
+  const url = new URL(req.url, `https://${req.headers.host}`);
+  const rank = url.searchParams.get('rank') ?? 'CLEAR_0';
 
   const rankConfig = {
     CLEAR_0: { image: '/ogp/mygo/clear_00.png' },
