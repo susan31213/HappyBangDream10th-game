@@ -1,15 +1,15 @@
 module.exports = (req, res) => {
-  const rank = req.query.rank ?? 'CLEAR0';
+  const rank = req.query.rank ?? 'CLEAR_0';
 
   const rankConfig = {
-    CLEAR0: { image: '/ogp/mygo/clear_00.png' },
-    CLEAR1: { image: '/ogp/mygo/clear_01.png' },
-    CLEAR2: { image: '/ogp/mygo/clear_02.png' },
-    CLEAR3: { image: '/ogp/mygo/clear_03.png' },
+    CLEAR_0: { image: '/ogp/mygo/clear_00.png' },
+    CLEAR_1: { image: '/ogp/mygo/clear_01.png' },
+    CLEAR_2: { image: '/ogp/mygo/clear_02.png' },
+    CLEAR_3: { image: '/ogp/mygo/clear_03.png' },
     CLEAR_SP: { image: '/ogp/mygo/clear_sp.png' },
   };
 
-  const config = rankConfig[rank] ?? rankConfig['CLEAR0'];
+  const config = rankConfig[rank] ?? rankConfig['CLEAR_0'];
   const baseUrl = `https://happy-bang-dream10th-game.vercel.app`;
   const imageUrl = `${baseUrl}${config.image}`;
   const shareUrl = `${baseUrl}/api/share?rank=${rank}`;
