@@ -1,4 +1,5 @@
 import { TitleButton } from '../components/TitleButton.js';
+import { AppGlobals } from '../globals.js';
 
 export class BaseLevelScene extends Phaser.Scene {
 
@@ -42,10 +43,34 @@ export class BaseLevelScene extends Phaser.Scene {
             debugToolButton.buttonImage.setAlpha(this.isDebug ? 1.0 : 0.25);
             this.debugLayer.setVisible(this.isDebug);
         }).setName('debugToolButton');
+
+        const currentSpeed = AppGlobals.gameSpeedMultiplier || 1;
+        const debugSpeedButton = this.add.text(10, 140, `Debug: 速度 ${currentSpeed}x`, { fontSize: '20px', color: currentSpeed === 4 ? '#00ff00' : '#ff0000' }).setInteractive();
+        debugSpeedButton.on('pointerdown', () => {
+            const nextSpeed = (AppGlobals.gameSpeedMultiplier === 1 ? 4 : 1);
+            this.setGameSpeed(nextSpeed);
+            debugSpeedButton.setText(`Debug: 速度 ${nextSpeed}x`);
+            debugSpeedButton.setColor(nextSpeed === 4 ? '#00ff00' : '#ff0000');
+        });
+        this.debugLayer.add(debugSpeedButton);
+        this.setGameSpeed(currentSpeed);
     }
 
     onBackButtonClicked() {
         this.scene.start('TitleScene');
+    }
+
+    setGameSpeed(multiplier) {
+        AppGlobals.gameSpeedMultiplier = multiplier;
+        if (this.time && typeof this.time.timeScale !== 'undefined') {
+            this.time.timeScale = multiplier;
+        }
+        if (this.tweens && typeof this.tweens.timeScale !== 'undefined') {
+            this.tweens.timeScale = multiplier;
+        }
+        if (this.anims && typeof this.anims.globalTimeScale !== 'undefined') {
+            this.anims.globalTimeScale = multiplier;
+        }
     }
 
     update() {
