@@ -37,12 +37,12 @@ export class MyGoScene extends BaseLevelScene {
         'star2-win': 'ともりんの石検定1級を取りました！',
     };
     static ROUND_NUM_SNS_URLS = {
-        'stone0-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_0',  // TOMORI
-        'stone1-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_1',  // ANON
-        'stone2-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_2',  // TAKI
-        'stone2-win': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_3',   // RANA
-        'star2-lose': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_2',   // TAKI
-        'star2-win': 'https://happy-bang-dream10th-game.vercel.app/api/share?rank=CLEAR_SP',    // SOYO
+        'stone0-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_0',  // TOMORI
+        'stone1-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_1',  // ANON
+        'stone2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2',  // TAKI
+        'stone2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_3',   // RANA
+        'star2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2',   // TAKI
+        'star2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_SP',    // SOYO
     };
 
     init(data) {
@@ -351,7 +351,7 @@ export class MyGoScene extends BaseLevelScene {
         sharebtn.on('pointerdown', () => {
             sharebtn.setTint(0xaaaaaa);
             const keyStr = this.stoneType + this.roundNum + (isCorrect ? '-win' : '-lose');
-            const url = MyGoScene.ROUND_NUM_SNS_URLS[keyStr] || 'https://bit.ly/4uEIiDY';
+            const url = MyGoScene.ROUND_NUM_SNS_URLS[keyStr] || 'https://happy-bang-dream10th-game.netlify.app';
             const text = MyGoScene.ROUND_NUM_SNS_TEXTS[keyStr] + 'あなたは何級？ともりんの石検定に挑戦してみてね！';
             const shareLink = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
             window.open(shareLink, '_blank', 'width=600,height=500');
