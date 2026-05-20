@@ -1,6 +1,5 @@
-module.exports = (req, res) => {
-  const url = new URL(req.url, `https://${req.headers.host}`);
-  const rank = url.searchParams.get('rank') ?? 'CLEAR_0';
+exports.handler = async (event) => {
+  const rank = event.queryStringParameters?.rank ?? 'CLEAR_0';
 
   const rankConfig = {
     CLEAR_0: { image: '/ogp/mygo/clear_00.png' },
@@ -10,10 +9,12 @@ module.exports = (req, res) => {
     CLEAR_SP: { image: '/ogp/mygo/clear_sp.png' },
   };
 
-  const config = rankConfig[rank] ?? rankConfig['CLEAR_0'];
-  const baseUrl = `https://happy-bang-dream10th-game.vercel.app`;
+  const config = rankConfig[rank] ?? rankConfig.CLEAR_0;
+  const host = event.headers?.host || 'happy-bang-dream10th-game.netlify.app';
+  const protocol = event.headers?.['x-forwarded-proto'] || event.headers?.['x-forwarded-protocol'] || 'https';
+  const baseUrl = `${protocol}://${host}`;
   const imageUrl = `${baseUrl}${config.image}`;
-  const shareUrl = `${baseUrl}/api/share?rank=${rank}`;
+  const shareUrl = `${baseUrl}/api/share?rank=${encodeURIComponent(rank)}`;
 
   const html = `<!DOCTYPE html>
 <html>
@@ -32,15 +33,19 @@ module.exports = (req, res) => {
   <meta name="twitter:image"       content="${imageUrl}">
 
   <!-- ゲーム本体にリダイレクト（任意） -->
-  <meta http-equiv="refresh" content="0;url=https://happy-bang-dream10th-game.vercel.app">
+  <meta http-equiv="refresh" content="0;url=https://happy-bang-dream10th-game.netlify.app">
 </head>
 <body>
   <p>リダイレクト中...</p>
 </body>
 </html>`;
 
-  res.setHeader('Content-Type', 'text/html;charset=UTF-8');
-  // XのOGPクローラー向けキャッシュ設定
-  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
-  res.status(200).send(html);
+  return {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'text/html;charset=UTF-8',
+      'Cache-Control': 's-maxage=3600, stale-while-revalidate',
+    },
+    body: html,
+  };
 };
