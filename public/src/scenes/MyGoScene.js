@@ -325,7 +325,7 @@ export class MyGoScene extends BaseLevelScene {
     createBackButton(isCorrect) {
         const backbtn = this.add.image(
             this.cameras.main.centerX + 160,
-            this.cameras.main.centerY + 525,
+            this.cameras.main.centerY + 570,
             'title_btn'
         ).setOrigin(0.5).setInteractive();
         backbtn.on('pointerover', () => {
@@ -342,7 +342,7 @@ export class MyGoScene extends BaseLevelScene {
 
         const sharebtn = this.add.image(
             this.cameras.main.centerX - 160,
-            this.cameras.main.centerY + 525,
+            this.cameras.main.centerY + 570,
             'share_btn'
         ).setOrigin(0.5).setInteractive();
         sharebtn.on('pointerover', () => {
