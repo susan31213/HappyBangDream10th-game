@@ -353,8 +353,20 @@ export class MyGoScene extends BaseLevelScene {
             const keyStr = this.stoneType + this.roundNum + (isCorrect ? '-win' : '-lose');
             const url = MyGoScene.ROUND_NUM_SNS_URLS[keyStr] || 'https://happy-bang-dream10th-game.netlify.app';
             const text = MyGoScene.ROUND_NUM_SNS_TEXTS[keyStr] + 'あなたは何級？ともりんの石検定に挑戦してみてね！';
-            const shareLink = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-            window.open(shareLink, '_blank', 'width=600,height=500');
+            const webLink = `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                const appLink = `twitter://post?message=${encodeURIComponent(text + ' ' + url)}`;
+                const start = Date.now();
+                window.location.href = appLink;
+                setTimeout(() => {
+                    if (Date.now() - start < 2000) {
+                        window.open(webLink, '_blank');
+                    }
+                }, 1500);
+            } else {
+                window.open(webLink, '_blank', 'width=600,height=500');
+            }
         });
         sharebtn.on('pointerout', () => {
             sharebtn.setScale(1.0);
