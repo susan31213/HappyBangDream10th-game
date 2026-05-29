@@ -45,4 +45,12 @@ const config = {
     },
 }
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Auto-focus the game canvas to enable audio playback
+game.events.once('ready', () => {
+    const canvas = game.canvas;
+    if (canvas) {
+        canvas.focus();
+    }
+});
