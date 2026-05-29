@@ -8,15 +8,8 @@ export class TitleScene extends Phaser.Scene {
         this.scene.launch('PreloaderScene');
         this.load.audio('bgm', 'assets/sound/shimtone-raburizu.mp3');
 
-        this.load.image('poppinparty', 'assets/logo/Poppin\'Party_logo.png');
-        this.load.image('afterglow', 'assets/logo/Afterglow_logo.png');
-        this.load.image('pastelpalettes', 'assets/logo/Pastel_Palettes_logo.png');
-        this.load.image('roselia', 'assets/logo/Roselia_logo.png');
-        this.load.image('hellowhappyworld', 'assets/logo/Hello,_Happy_World!_logo.png');
-        this.load.image('morfonica', 'assets/logo/Morfonica_logo.png');
-        this.load.image('raiseasuilen', 'assets/logo/RAISE_A_SUILEN_logo.png');
-        this.load.image('mygo', 'assets/logo/MyGO!!!!!_logo.png');
-        this.load.image('avemujica', 'assets/logo/Ave_Mujica_logo.webp');
+        this.load.image('title_bg', 'assets/title.png');
+        this.load.image('popipa', 'assets/logo/popipa.png');
     }
 
     create() {
@@ -26,15 +19,18 @@ export class TitleScene extends Phaser.Scene {
         this.sound.stopAll();
         this.sound.play('bgm', { loop: true, volume: 0.3 });
 
-        this.addButton(190, 200, 'poppinparty', 'PoppinPartyScene');
-        this.addButton(530, 200, 'afterglow', 'AfterglowScene');
-        this.addButton(190, 400, 'pastelpalettes', 'PastelPalettesScene');
-        this.addButton(530, 400, 'roselia', 'RoseliaScene');
-        this.addButton(190, 600, 'hellowhappyworld', 'HelloHappyWorldScene');
-        this.addButton(530, 600, 'morfonica', 'MorfonicaScene');
-        this.addButton(190, 800, 'raiseasuilen', 'RaiseASuilenScene');
-        this.addButton(530, 800, 'mygo', 'MyGoScene', {roundNum: 0});
-        this.addButton(190, 1000, 'avemujica', 'AveMujicaScene');
+        // add title background
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'title_bg');
+
+        this.addButton(176, 158, 'popipa', 'PoppinPartyScene');
+        // this.addButton(516, 110, 'popipa', 'AfterglowScene');
+        // this.addButton(38, 345, 'popipa', 'PastelPalettesScene');
+        // this.addButton(437, 283, 'popipa', 'RoseliaScene');
+        // this.addButton(190, 600, 'popipa', 'HelloHappyWorldScene');
+        // this.addButton(530, 600, 'popipa', 'MorfonicaScene');
+        // this.addButton(190, 800, 'popipa', 'RaiseASuilenScene');
+        // this.addButton(530, 800, 'popipa', 'MyGoScene', {roundNum: 0});
+        // this.addButton(190, 1000, 'popipa', 'AveMujicaScene');
     }
 
     update() {
@@ -42,13 +38,21 @@ export class TitleScene extends Phaser.Scene {
 
     }
 
-    addButton(x, y, imageKey, sceneToStart, data = {}) {
-        const button = this.add.image(x, y, imageKey);
+    addButton(x, y, texture, sceneToStart, data = {}) {
+        const button = this.add.image(x, y, texture);
         button.setInteractive();
 
         button.on('pointerdown', () => {
-            this.scene.start(sceneToStart, data);
+            button.setTint(0xffffff);
             this.sound.stopAll();
+
+            const cam = this.cameras.main;
+            cam.pan(button.x, button.y, 1000, 'Linear');
+            cam.zoomTo(2, 1000, 'Linear');
+            cam.fade(900, 255, 255, 255);
+            this.time.delayedCall(1000, () => {
+                this.scene.start(sceneToStart, data);
+            });
         });
 
         return button;
