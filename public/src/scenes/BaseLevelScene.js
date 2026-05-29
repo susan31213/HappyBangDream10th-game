@@ -73,6 +73,21 @@ export class BaseLevelScene extends Phaser.Scene {
         }
     }
 
+    setUiScrollFactor0() {
+        const backButton = this.children.getByName('backButton');
+        const audioButton = this.children.getByName('audioButton');
+        const debugToolButton = this.children.getByName('debugToolButton');
+        if (backButton) {
+            backButton.buttonImage.setScrollFactor(0);
+        }
+        if (audioButton) {
+            audioButton.buttonImage.setScrollFactor(0);
+        }
+        if (debugToolButton) {
+            debugToolButton.buttonImage.setScrollFactor(0);
+        }
+    }
+
     update() {
 
     }
