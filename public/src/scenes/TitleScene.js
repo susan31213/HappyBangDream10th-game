@@ -7,9 +7,18 @@ export class TitleScene extends Phaser.Scene {
     preload() {
         this.scene.launch('PreloaderScene');
         this.load.audio('bgm', 'assets/sound/shimtone-raburizu.mp3');
+        this.load.audio('zoom_se', 'assets/sound/se/zoom.mp3');
 
         this.load.image('title_bg', 'assets/title.png');
         this.load.image('popipa', 'assets/logo/popipa.png');
+        this.load.image('afterglow', 'assets/logo/afterglow.png');
+        this.load.image('paspale', 'assets/logo/paspale.png');
+        this.load.image('roselia', 'assets/logo/roselia.png');
+        this.load.image('hellohappyworld', 'assets/logo/hellohappyworld.png');
+        this.load.image('morfonica', 'assets/logo/morfonica.png');
+        this.load.image('ras', 'assets/logo/ras.png');
+        this.load.image('mygo', 'assets/logo/mygo.png');
+        this.load.image('avemujica', 'assets/logo/avemujica.png');
     }
 
     create() {
@@ -23,14 +32,14 @@ export class TitleScene extends Phaser.Scene {
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'title_bg');
 
         this.addButton(176, 158, 'popipa', 'PoppinPartyScene');
-        // this.addButton(516, 110, 'popipa', 'AfterglowScene');
-        // this.addButton(38, 345, 'popipa', 'PastelPalettesScene');
-        // this.addButton(437, 283, 'popipa', 'RoseliaScene');
-        // this.addButton(190, 600, 'popipa', 'HelloHappyWorldScene');
-        // this.addButton(530, 600, 'popipa', 'MorfonicaScene');
-        // this.addButton(190, 800, 'popipa', 'RaiseASuilenScene');
-        // this.addButton(530, 800, 'popipa', 'MyGoScene', {roundNum: 0});
-        // this.addButton(190, 1000, 'popipa', 'AveMujicaScene');
+        this.addButton(512, 132, 'afterglow', 'AfterglowScene');
+        this.addButton(227, 393, 'paspale', 'PastelPalettesScene');
+        this.addButton(562.5, 381, 'roselia', 'RoseliaScene');
+        this.addButton(189, 626, 'hellohappyworld', 'HelloHappyWorldScene');
+        this.addButton(511, 618, 'morfonica', 'MorfonicaScene');
+        this.addButton(215, 869, 'ras', 'RaiseASuilenScene');
+        this.addButton(558, 867, 'mygo', 'MyGoScene');
+        this.addButton(499, 1139, 'avemujica', 'AveMujicaScene');
     }
 
     update() {
@@ -43,14 +52,17 @@ export class TitleScene extends Phaser.Scene {
         button.setInteractive();
 
         button.on('pointerdown', () => {
-            button.setTint(0xffffff);
-            this.sound.stopAll();
-
+            this.sound.play('zoom_se', { volume: 0.5, rate: 1.2, detune: 100 });
+            const time = 1000;
+            const ease = 'Back.easeIn';
             const cam = this.cameras.main;
-            cam.pan(button.x, button.y, 1000, 'Linear');
-            cam.zoomTo(2, 1000, 'Linear');
-            cam.fade(900, 255, 255, 255);
-            this.time.delayedCall(1000, () => {
+            cam.pan(button.x, button.y, time, ease);
+            cam.zoomTo(2, time, ease);
+            this.time.delayedCall(500, () => {
+                cam.fade(time - 500, 255, 255, 255);
+            });
+            this.time.delayedCall(time, () => {
+                this.sound.stopAll();
                 this.scene.start(sceneToStart, data);
             });
         });
