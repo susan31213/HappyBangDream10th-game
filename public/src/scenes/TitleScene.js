@@ -26,7 +26,7 @@ export class TitleScene extends Phaser.Scene {
 
         // stop all bgm when enter the title scene
         this.sound.stopAll();
-        this.sound.play('bgm', { loop: true, volume: 0.3 });
+        this.sound.play('bgm', { loop: true, volume: 0.5 });
 
         // add title background
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'title_bg');

@@ -20,9 +20,12 @@ export class RoseliaScene extends BaseLevelScene {
             const filename = `map` + i.toString().padStart(2, '0');
             this.load.image(`map${i}`, `assets/roselia/${filename}.png`);
         }
+        this.load.audio('roselia_bgm', 'assets/sound/Peritune_Gentle_Brew.mp3');
     }
 
     create() {
+        this.sound.play('roselia_bgm', { loop: true, volume: 0.5 });
+
         super.create();
         this.createJoyStick();
         this.createMap();
