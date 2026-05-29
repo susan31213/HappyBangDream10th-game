@@ -54,16 +54,6 @@ export class BaseLevelScene extends Phaser.Scene {
         });
         this.debugLayer.add(debugSpeedButton);
         this.setGameSpeed(currentSpeed);
-
-        const fullscreenButton = this.add.text(10, 180, 'Fullscreen', { fontSize: '20px', color: '#00ff00' }).setInteractive();
-        fullscreenButton.on('pointerdown', () => {
-            if (this.scale.isFullscreen) {
-                this.scale.stopFullscreen();
-            } else {
-                this.scale.startFullscreen();
-            }
-        });
-        this.debugLayer.add(fullscreenButton);
     }
 
     onBackButtonClicked() {
