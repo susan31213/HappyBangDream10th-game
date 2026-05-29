@@ -23,7 +23,7 @@ const config = {
         default: "arcade", // ここでarcadeを指定します。
         arcade: {
             gravity: { x: 0, y: 0 }, // y:重力
-            debug: true, // true にすることで衝突検知の範囲を画面に表示します。
+            debug: false, // true にすることで衝突検知の範囲を画面に表示します。
         },
     },
     scene: [
