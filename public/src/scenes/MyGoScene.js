@@ -37,12 +37,12 @@ export class MyGoScene extends BaseLevelScene {
         'star2-win': 'ともりんの石検定1級を取りました！',
     };
     static ROUND_NUM_SNS_URLS = {
-        'stone0-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_0',  // TOMORI
-        'stone1-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_1',  // ANON
-        'stone2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2',  // TAKI
-        'stone2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_3',   // RANA
-        'star2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2',   // TAKI
-        'star2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_SP',    // SOYO
+        'stone0-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_0&v=1',  // TOMORI
+        'stone1-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_1&v=1',  // ANON
+        'stone2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2&v=1',  // TAKI
+        'stone2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_3&v=1',   // RANA
+        'star2-lose': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_2&v=1',   // TAKI
+        'star2-win': 'https://happy-bang-dream10th-game.netlify.app/api/share?rank=CLEAR_SP&v=1',    // SOYO
     };
 
     init(data) {
